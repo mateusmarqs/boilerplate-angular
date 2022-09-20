@@ -1,1 +1,6 @@
-# boilerplate-angular
+# Boilerplate
+
+Criar projeto
+
+-> ng new {name} --strict
+
