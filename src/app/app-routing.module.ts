@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'home',
     // Lazy loading do componente
     loadChildren:  () => import('./home/home.module').then(module => module.HomeModule)
+  },
+  {
+    path: 'animals',
+    loadChildren:  () => import('./animals/animals.module').then(module => module.AnimalsModule)
   }
 ];
 
