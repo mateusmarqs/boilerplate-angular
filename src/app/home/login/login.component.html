@@ -9,4 +9,6 @@
         <app-alert *ngIf="userPassword.invalid && userPassword.touched" message="Senha obrigatória"></app-alert>
         <button type="submit" [disabled]="loginForm.invalid">Acessar</button>
     </form>
+
+    <p>Não é um usuário? <a [routerLink]="['new-account']">Cadastra-se</a></p>
 </div>
