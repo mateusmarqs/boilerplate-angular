@@ -1,0 +1,12 @@
+<header>
+    <a class="title">MotosCross</a>
+    <div *ngIf="user$ | async as user">
+        <ng-container *ngIf="user.name; else login">
+            <span class="name"> Bem vindo, <b>{{ user.name }}</b> </span>
+            <a class="button" (click)="logout()">Logout</a>
+        </ng-container>
+    </div>
+    <ng-template #login>
+        <a class="button" [routerLink]="['']">Login</a>
+    </ng-template>
+</header>
