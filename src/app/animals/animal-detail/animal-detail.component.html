@@ -1,0 +1,21 @@
+<div *ngIf="animal$ | async as animal">
+  <div>
+    <app-animal
+      [url]="animal.url"
+      [description]="animal.description"
+    ></app-animal>
+  </div>
+  <div class="description">
+    <p>{{ animal.description }}</p>
+    <div class="buttons-contaier">
+      <button (click)="like()">L: {{ animal.likes }}</button>
+      <button>C: {{ animal.comments }}</button>
+      <button (click)="delete()">Excluir</button>
+    </div>
+    <app-comments
+      [id]="animalId"
+      *ngIf="animal.allowComments; else warning"
+    ></app-comments>
+    <ng-template #warning> Usuário não pode comentar o animal. </ng-template>
+  </div>
+</div>
