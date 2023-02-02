@@ -1,10 +1,14 @@
 <div class="login-container">
     <h2 class="title">Login</h2>
-    <form class="login-form" (ngSubmit)="login()">
+    <form class="login-form" (ngSubmit)="login()" #loginForm="ngForm">
         <label for="">Usuário</label>
-        <input type="text" [(ngModel)]="user" name="user">
+        <input type="text" [(ngModel)]="user" name="user" #userName="ngModel" required>
+        <app-alert *ngIf="userName.invalid && userName.touched" message="Usuário obrigatório"></app-alert>
         <label for="">Senha</label>
-        <input type="password" [(ngModel)]="password" name="password">
-        <button type="submit">Acessar</button>
+        <input type="password" [(ngModel)]="password" name="password" #userPassword="ngModel" required>
+        <app-alert *ngIf="userPassword.invalid && userPassword.touched" message="Senha obrigatória"></app-alert>
+        <button type="submit" [disabled]="loginForm.invalid">Acessar</button>
     </form>
+
+    <p>Não é um usuário? <a [routerLink]="['new-account']">Cadastra-se</a></p>
 </div>

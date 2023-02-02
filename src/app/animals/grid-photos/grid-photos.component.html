@@ -1,0 +1,15 @@
+<p *ngIf="!animals.length"> Desculpe, não há animais.</p>
+
+<div class="grid-coontainer">
+  <ng-container *ngFor="let animal of animals">
+    <div>
+      <a [routerLink]="['/animals', animal.id]">
+        <app-card>
+          <app-animal [url]="animal.url" [description]="animal.description"></app-animal>
+        </app-card>
+        <i> Likes: {{animal.likes}}</i>
+        <i> Comentários: {{animal.comments}}</i>
+      </a>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,23 @@
+<div class="login-container">
+    <h2 class="title">Faça seu cadastro agora mesmo!</h2>
+    <form class="login-form" [formGroup]="newUserForm" (submit)="createUser()">
+        <label for="">E-mail</label>
+        <input type="text" placeholder="E-mail" formControlName="email">
+        <app-alert *ngIf="newUserForm.get('email')?.errors?.['required'] && newUserForm.get('email')?.touched" message="E-mail obrigatório."></app-alert>
+        <app-alert *ngIf="newUserForm.get('email')?.errors?.['email'] && newUserForm.get('email')?.touched" message="O formato do e-mail está incorreto."></app-alert>
+        <label for="">Nome</label>
+        <input type="text" placeholder="Nome" formControlName="fullName">
+        <app-alert *ngIf="newUserForm.get('fullName')?.errors?.['required'] && newUserForm.get('fullName')?.touched" message="Nome obrigatório."></app-alert>
+        <app-alert *ngIf="newUserForm.get('fullName')?.errors?.['minlength'] && newUserForm.get('fullName')?.touched" message="É necessário ter no minímo 4 caracteres."></app-alert>
+        <label for="">Usuário</label>
+        <input type="text" placeholder="Usuário" formControlName="userName">
+        <app-alert *ngIf="newUserForm.get('userName')?.errors?.['lowerCase'] && newUserForm.get('userName')?.touched" message="O usuário deve conter apenas letras minúsculas."></app-alert>
+        <app-alert *ngIf="newUserForm.get('userName')?.errors?.['userExists'] && newUserForm.get('userName')?.touched" message="Este usuário já existe."></app-alert>
+        <label for="">Senha</label>
+        <input type="text" placeholder="Senha" formControlName="password">
+        <app-alert *ngIf="newUserForm?.errors?.['userNamePasswordEqual'] && newUserForm.get('password')?.touched" message="O usuário e a senha não pode ser iguais."></app-alert>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>Já é um usuário? <a [routerLink]="['']">Faça login</a></p>
+</div>

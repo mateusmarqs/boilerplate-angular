@@ -1,0 +1,14 @@
+<div *ngIf="comments$ | async as comments">
+  <ul>
+    <li *ngFor="let comment of comments">
+      <p>{{ comment.username }}</p>
+      <em>{{ comment.date | date : "dd-MM-yyyy HH:mm" }}</em>
+      <p>{{ comment.text }}</p>
+    </li>
+  </ul>
+  <form [formGroup]="commentForm" (submit)="saveComment()">
+    <textarea formControlName="comment"></textarea>
+    <app-alert *ngIf="!!commentForm.get('comment')?.errors?.['maxLength']">Tamanho máximo de 100 caracteres.</app-alert>
+    <button [disabled]="commentForm.invalid">Comentar</button>
+  </form>
+</div>
