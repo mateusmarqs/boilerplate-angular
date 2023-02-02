@@ -1,5 +1,13 @@
 <header>
+   <button (click)="menu.openMenu()">=</button>
     <a class="title">MotosCross</a>
+    <app-menu #menu>
+      <ul>
+        <li>
+          <a [routerLink]="['animals', 'novo']">Novo Animal</a>
+        </li>
+      </ul>
+    </app-menu>
     <div *ngIf="user$ | async as user">
         <ng-container *ngIf="user.name; else login">
             <span class="name"> Bem vindo, <b>{{ user.name }}</b> </span>
