@@ -10,6 +10,7 @@ import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { CommentsComponent } from './animal-detail/comments/comments.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from '../components/alert/alert.module';
+import { NewAnimalComponent } from './new-animal/new-animal.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AlertModule } from '../components/alert/alert.module';
     GridPhotosComponent,
     AnimalDetailComponent,
     CommentsComponent,
+    NewAnimalComponent,
 
   ],
   imports: [

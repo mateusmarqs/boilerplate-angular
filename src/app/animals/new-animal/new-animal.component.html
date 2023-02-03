@@ -1,0 +1,25 @@
+<div>
+  <form [formGroup]="animalForm" (submit)="upload()">
+    <ng-container *ngIf="!preview; else previewImage">
+      <input #fileInput type="file" formControlName="file" accept="image/*" (change)="saveFile($event.target)" hidden>
+      <button type="button" (click)="fileInput.click()">Adicionar</button>
+      <app-alert [message]="animalForm.get('file')?.errors?.['required'] ? 'Coloca a foto' : '' "></app-alert>
+    </ng-container>
+    <ng-template #previewImage>
+      <app-animal [url]="preview" title="Preview"></app-animal>
+    </ng-template>
+    <textarea formControlName="description" placeholder="Descrição do animal"></textarea>
+    <app-alert [message]="animalForm.get('description')?.errors?.['maxLength'] ? 'Menos texto' : '' "></app-alert>
+    <div>
+      <label> Permite comentários? </label>
+      <input type="checkbox" formControlName="allowComments">
+    </div>
+    <ng-container *ngIf="!percentage; else uploadDiv">
+      <button [disabled]="animalForm.invalid" type="submit">Enviar</button>
+      <a routerLink="['animals']">Cancelar</a>
+    </ng-container>
+    <ng-template #uploadDiv>
+      <span>Percentual de upload: {{ percentage }} %</span>
+    </ng-template>
+  </form>
+</div>

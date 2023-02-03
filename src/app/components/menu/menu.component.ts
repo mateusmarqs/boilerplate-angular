@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
   }
 
   openMenu() {
-    console.log('eta')
     this.visible = !this.visible
   }
 
